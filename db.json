@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": 123,
+      "username": "admin",
+      "password": "123456",
+      "name": "مدیر سایت"
+    },
+    {
+      "id": 245,
+      "username": "user",
+      "password": "123456",
+      "name": "کاربر معمولی"
+    }
+  ]
+}
