@@ -1,89 +1,30 @@
-// components/common/ThemeToggle/ThemeToggle.tsx
+/**
+ * ThemeToggle
+ * ===========
+ * Toggle button for switching between dark and light theme using useTheme hook.
+ *
+ * دکمه سوییچ تم (روشن/تاریک) با ظاهر آیکونی و پشتیبانی از حالت‌های مختلف سایز.
+ *
+ * Props:
+ *   - size: سایز دکمه ("small" | "middle" | "large")
+ *   - showLabel: نمایش متن کنار آیکون (پیش‌فرض: true)
+ *   - showSettings: (رزرو برای آینده یا دکمه جداگانه)
+ *
+ * مصرف:
+ *   <ThemeToggle size="middle" showLabel={false} />
+ */
 
-import { Button, Dropdown, Space, Switch } from "antd";
-import {
-  SunOutlined,
-  MoonOutlined,
-
-  BulbOutlined,
-} from "@ant-design/icons";
+import { Button } from "antd";
+import { SunOutlined, MoonOutlined } from "@ant-design/icons";
 import { useTheme } from "../../hooks/useTheme";
+import type { ThemeToggleProps } from "../../types";
 
-interface ThemeToggleProps {
-  size?: "small" | "middle" | "large";
-  showLabel?: boolean;
-  showSettings?: boolean;
-}
 
 export const ThemeToggle = ({
-  size = "middle",
-  showLabel = false,
-  showSettings = true,
+  size = "large",
+  showLabel = true,
 }: ThemeToggleProps) => {
-  const {
-    mode,
-    isDark,
-    systemThemeWatcher,
-    toggle,
-    setTheme,
-    enableSystemWatcher,
-  } = useTheme();
-
-  const settingsMenu = {
-    items: [
-      {
-        key: "light",
-        label: (
-          <Space>
-            <SunOutlined />
-            روشن
-          </Space>
-        ),
-        onClick: () => setTheme("light"),
-      },
-      {
-        key: "dark",
-        label: (
-          <Space>
-            <MoonOutlined />
-            تاریک
-          </Space>
-        ),
-        onClick: () => setTheme("dark"),
-      },
-      {
-        type: "divider" as const,
-      },
-      {
-        key: "system",
-        label: (
-          <Space>
-            <BulbOutlined />
-            <span>تشخیص خودکار سیستم</span>
-            <Switch
-              size="small"
-              checked={systemThemeWatcher}
-              onChange={enableSystemWatcher}
-            />
-          </Space>
-        ),
-      },
-    ],
-  };
-
-  if (showSettings) {
-    return (
-      <Dropdown menu={settingsMenu} placement="bottomRight">
-        <Button
-          type="text"
-          size={size}
-          icon={isDark ? <MoonOutlined /> : <SunOutlined />}
-        >
-          {showLabel && (isDark ? "تاریک" : "روشن")}
-        </Button>
-      </Dropdown>
-    );
-  }
+  const { isDark, toggle } = useTheme();
 
   return (
     <Button

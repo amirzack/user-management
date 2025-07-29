@@ -4,16 +4,14 @@
   font-weight: normal;
   font-style: normal;
 }
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: inherit;
+  font-family: inherit;
   direction: rtl;
-  padding: 2rem;
-}
-
-:root {
-  --transition-theme: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .light {
@@ -23,7 +21,6 @@
   --text-secondary: #00000073;
   --border-color: #d9d9d9;
 }
-
 .dark {
   --bg-primary: #141414;
   --bg-secondary: #1f1f1f;
@@ -32,10 +29,6 @@
   --border-color: #424242;
 }
 
-/* Smooth transitions */
-* {
-  transition: var(--transition-theme);
-}
 
 /* Custom scrollbar for dark mode */
 .dark ::-webkit-scrollbar {
@@ -53,4 +46,45 @@
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #666;
+}
+
+.center-con{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column; 
+}
+
+/*app layout styles-------------------*/
+.layoutRoot {
+  min-height: 100vh;
+}
+
+.siderLogo {
+  padding: 17px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color, #f0f0f0);
+}
+
+.headerMain {
+  background: var(--header-bg, #fff);
+  border-bottom: 1px solid var(--border-color, #f0f0f0);
+  /* fixed height for header stickiness if needed */
+}
+
+.contentMain {
+  padding: 24px;
+  background: var(--content-bg, #f5f5f5);
+}
+
+@media (max-width: 768px) {
+  .contentMain {
+    padding: 12px;
+  }
+
+  .siderLogo {
+    padding: 10px;
+    font-size: 15px;
+  }
 }

@@ -1,22 +1,31 @@
-// hooks/useTheme.ts
-import { useCallback, useEffect } from "react";
+/**
+ * useTheme
+ * ========
+ * Custom hook for theme management (dark/light) in React+Redux apps.
+ *
+ * Provides current theme mode, booleans for dark/light, and theme control methods.
+ * All updates are dispatched directly to Redux; great for separation of concerns between UI and logic.
+ *
+ * هوک سفارشی برای مدیریت تم (روشن/تاریک).
+ * مقدار فعلی تم، boolean حالت‌های روشن/تاریک، و توابع تغییر تم را (set/toggle)
+ * بصورت آماده برای مصرف کامپوننت‌های UI ارائه می‌دهد.
+ *
+ * Usage Example:
+ *   const { mode, isDark, setTheme, toggle } = useTheme();
+ *   <button onClick={toggle}>{isDark ? "Switch to Light" : "Switch to Dark"}</button>
+ *پیشنهاداتی برای بهبوت :
+ *در زمان ورود کاربر میتوان تم سیستمی را چک کرد و براساس تم سیستمی تم را روشن یا تاریک تعریف کرد
+ */
 
-import {
-  setThemeMode,
-  toggleTheme,
-  setSystemThemeWatcher,
-  syncWithSystemTheme,
-} from "../store/themeSlice";
-import { ThemeService } from "../services/themeService";
+import { useCallback } from "react";
+import { setThemeMode, toggleTheme } from "../store/themeSlice";
 import type { ThemeMode } from "../types";
 import type { RootState } from "../store/store";
 import { useAppDispatch, useAppSelector } from "./redux";
 
 export const useTheme = () => {
   const dispatch = useAppDispatch();
-  const { mode, isDark, systemThemeWatcher } = useAppSelector(
-    (state: RootState) => state.theme
-  );
+  const { mode, isDark } = useAppSelector((state: RootState) => state.theme);
 
   const setTheme = useCallback(
     (newMode: ThemeMode) => {
@@ -24,36 +33,15 @@ export const useTheme = () => {
     },
     [dispatch]
   );
-
   const toggle = useCallback(() => {
     dispatch(toggleTheme());
   }, [dispatch]);
-
-  const enableSystemWatcher = useCallback(
-    (enable: boolean) => {
-      dispatch(setSystemThemeWatcher(enable));
-    },
-    [dispatch]
-  );
-
-  // System theme watcher effect
-  useEffect(() => {
-    if (!systemThemeWatcher) return;
-
-    const cleanup = ThemeService.watchSystemTheme((newMode) => {
-      dispatch(syncWithSystemTheme(newMode));
-    });
-
-    return cleanup;
-  }, [systemThemeWatcher, dispatch]);
 
   return {
     mode,
     isDark,
     isLight: !isDark,
-    systemThemeWatcher,
     setTheme,
     toggle,
-    enableSystemWatcher,
   };
 };
