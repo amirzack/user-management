@@ -67,12 +67,10 @@ export class AuthService {
   static async logout(): Promise<void> {
     try {
       // Optional server call
-      await apiClient.post("/auth/logout");
+      localStorage.removeItem("theme");
+      localStorage.removeItem("user");
     } catch (error) {
       console.warn("Server logout failed");
-    } finally {
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
     }
   }
   /**
