@@ -11,6 +11,13 @@
 
 ## 🛠 اجرای پروژه
 
+کلون پروژه :
+
+```bash
+git clone https://github.com/amirzack/user-manager.git
+cd user-manager
+```
+
 1. نصب پکیج‌ها:
 
 ```bash
@@ -30,12 +37,14 @@ npm run test
 ```
 
 📋 اطلاعات ورود پیش‌فرض
+
 👤 نام کاربری: admin
 
 🔐 رمز عبور: 123456
 
-4. آدرس لایو (در صورت تنظیم):
-   [https://your-live-url.com](https://your-live-url.com)
+4. آدرس لایو پنل :
+
+   [https://user-management.liara.run](https://user-management.liara.run)
 
 ---
 
@@ -80,11 +89,13 @@ npm run test
 
 ---
 
-🙏 بابت بررسی پروژه ممنون
+پیشاپیش بابت بررسی و زمان گذاشتن روی پروژه ممنون🙏
 
 ## ✍️ نویسنده
 
 پروژه توسط [amirzack](https://github.com/amirzack) توسعه داده شده است.
+
+Email: amirzakipour23@gmail.com
 
 <div align=“center”>
 
