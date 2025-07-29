@@ -4,6 +4,14 @@
 با پیاده سازی فرم ورود ساده و نگهداری کاربر برای بازدید بعدی
 با دو تم روشن و تیره
 و نگهداری کاربر در استیت مرکزی و ویرایش اطلاعات کاربر
+این پروژه اول با json-server پیاده سازی شده بود 
+ولی به خاطر اجرای دو پورت همزمان روی PaaS 
+به همین دلیل جیسون سرور از پروژه حذف و با یک سرور نود کوچک جایگزین شده است
+اطلاعات ادمین از یک سرور کوچک نود جی اس به صورت آنلاین دریافت می شود
+با آدرس
+https://user-management-express.liara.run/users
+
+اطلاعات کاربران از reqres.in دریافت می شود
 
 [![React](https://img.shields.io/badge/React-18.0+-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -27,7 +35,7 @@ cd user-manager
 npm install
 ```
 
-2. اجرای پروژه و اجرای سرور:
+2. اجرای پروژه :
 
 ```bash
 npm run dev
@@ -60,7 +68,6 @@ npm run test
 - **Ant Design**
 - **Vite** (به‌عنوان build tool)
 - **Vitest + Testing Library**
-- **JSON Server** (برای API mock)
 
 ---
 

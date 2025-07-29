@@ -34,18 +34,22 @@ export class AuthService {
    */
   static async login(credentials: LoginCredentials): Promise<any> {
     try {
-      const response = await axios.get<Admin[]>("http://localhost:3001/users", {
-        params: {
-          username: credentials.name,
-          password: credentials.password,
-        },
-      });
-
-      const user = response.data[0];
+      const response = await axios.get<Admin>(
+        "https://user-management-express.liara.run/users",
+        {
+          params: {
+            username: credentials.name,
+            password: credentials.password,
+          },
+        }
+      );
+      console.log(response.data);
+      const user = response.data;
       if (!user) {
         throw new Error("نام کاربری و رمز عبور اشتباه است");
       }
       const { password, ...safeUser } = user;
+      console.log(safeUser);
       // Store user in localStorage
       // NOTE: In real-world apps, sensitive user info or auth tokens should be stored in secure cookies (HttpOnly).
       // Here we use localStorage just for learning/demo purpose, since there's no real server-side token.
@@ -101,23 +105,28 @@ export class AuthService {
    * - به صورت PATCH به آدرس /users/:id
    * - پس از موفقیت، user جدید در localStorage ذخیره می‌شود (بدون پسورد)
    */
-  static async updateProfile(userId: number, data: UpdateUserRequest) {
-    const response = await fetch(`http://localhost:3001/users/${userId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...data,
-      }),
-    });
+  static async updateProfile(
+    userId: number,
+    data: UpdateUserRequest
+  ): Promise<Admin> {
+    try {
+      const response = await axios.patch<Admin>(
+        `https://user-management-express.liara.run/users/${userId}`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-    if (!response.ok) {
+      const updatedUser = response.data;
+      const { password, ...safeUser } = updatedUser;
+      localStorage.setItem("user", JSON.stringify(safeUser));
+
+      return updatedUser;
+    } catch (error) {
       throw new Error("خطا در بروزرسانی پروفایل");
     }
-    const updatedUser = await response.json();
-    const { password, ...safeUser } = updatedUser;
-    localStorage.setItem("user", JSON.stringify(safeUser));
-    return updatedUser;
   }
 }
