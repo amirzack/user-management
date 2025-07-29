@@ -17,7 +17,7 @@ import type { LoginCredentials } from "../types";
 import { LoginForm } from "../components/ui/loginForm";
 import toast from "react-hot-toast";
 
-export const LoginPage: React.FC = () => {
+export const LoginPage = () => {
   const { login, isLoading, error, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const [loginAttempted, setLoginAttempted] = useState(false);

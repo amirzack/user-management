@@ -5,7 +5,7 @@
  *  Container for users logic, hooks and data flow.
  */
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePaginatedUsers } from "../hooks/usePaginatedUsers";
 import { useTheme } from "../hooks/useTheme";
 import type { ViewType } from "../types";
@@ -13,7 +13,7 @@ import { useUsers } from "../hooks/useUsers";
 import { useSearch } from "../hooks/useSearch";
 import { UsersView } from "../components/ui/usersList";
 
-export const UsersPage: React.FC = () => {
+export const UsersPage = () => {
   const [page, setPage] = useState(1);
   const [viewType, setViewType] = useState<ViewType>("list");
   const { isDark } = useTheme();

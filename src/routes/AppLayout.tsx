@@ -17,7 +17,7 @@ import { CustomText } from "../components/common/typography/CustomText";
 interface AppLayoutProps {
   children: React.ReactNode;
 }
-export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
+export const AppLayout = ({ children }: AppLayoutProps) => {
   const { Header, Sider, Content } = Layout;
   const { user, logout } = useAuth();
   const { isDark } = useTheme();

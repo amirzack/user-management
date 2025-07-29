@@ -5,7 +5,7 @@
  * هیچ چیزی از UI را خودش نگه نمی‌دارد بلکه همه چیز را به UserDetailView پاس می‌دهد.
  */
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useUser } from "../hooks/useUsers";
 import { Button, Alert } from "antd";
@@ -15,7 +15,7 @@ import { UserDetailView } from "../components/ui/userDetail";
 import Spinner from "../components/ui/spinner";
 import toast from "react-hot-toast";
 
-export const UserDetail: React.FC = () => {
+export const UserDetail = () => {
   const { id } = useParams<{ id?: string }>();
   const userId = id ? Number(id) : undefined;
   const navigate = useNavigate();

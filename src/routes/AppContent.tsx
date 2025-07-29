@@ -34,7 +34,7 @@ import { Toaster } from "react-hot-toast";
  
  */
 
-export const AppContent: React.FC = () => {
+export const AppContent = () => {
   const { authenticateUser, isInitialized } = useAuth();
 
   useEffect(() => {

@@ -28,7 +28,7 @@ interface ProfileCardProps {
   onEdit: () => void;
 }
 
-export function ProfileCard({ admin, onEdit }: ProfileCardProps) {
+export const ProfileCard = ({ admin, onEdit }: ProfileCardProps) => {
   return (
     <Card
       style={{ maxWidth: 400, margin: "0 auto" }}
@@ -50,4 +50,4 @@ export function ProfileCard({ admin, onEdit }: ProfileCardProps) {
       </Space>
     </Card>
   );
-}
+};

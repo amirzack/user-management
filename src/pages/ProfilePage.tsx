@@ -37,7 +37,7 @@ import { EditProfileModal } from "../components/common/EditProfileModal";
 import Spinner from "../components/ui/spinner";
 import toast from "react-hot-toast";
 
-export function ProfilePage() {
+export const ProfilePage = () => {
   const { user, isLoading, error } = useAuth();
   const [editVisible, setEditVisible] = useState(false);
   const [form] = Form.useForm();
@@ -91,4 +91,4 @@ export function ProfilePage() {
       />
     </div>
   );
-}
+};

@@ -20,7 +20,7 @@
 
 import { useState } from "react";
 
-export function useSearch(initial = "") {
+export const useSearch = (initial = "") => {
   const [search, setSearch] = useState(initial);
 
   const handleSearch = (val: string) => {
@@ -28,4 +28,4 @@ export function useSearch(initial = "") {
   };
 
   return { search, setSearch, handleSearch };
-}
+};

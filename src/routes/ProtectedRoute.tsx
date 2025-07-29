@@ -2,7 +2,6 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import Spinner from "../components/ui/spinner";
 
-
 /**
  * ProtectedRoute
  * ---------------
@@ -19,7 +18,7 @@ interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
-export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
+export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const { isAuthenticated, isInitialized } = useAuth();
   if (!isInitialized) {
     return <Spinner />;

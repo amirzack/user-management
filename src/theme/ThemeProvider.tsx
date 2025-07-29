@@ -24,7 +24,7 @@ interface ThemeProviderProps {
  * Usage:
  * این کامپوننت باید در بالاترین سطح اپلیکیشن (معمولاً نزدیک به App یا AppContent) برای فراهم کردن تم سرتاسری استفاده شود.
  */
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const { isDark } = useTheme();
 
   const currentTheme = useMemo(() => {
