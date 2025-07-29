@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'irfont';
-  src: url('/fonts/Gandom-FD.woff2') format('woff2');
+  font-family: "irfont";
+  src: url("/fonts/Gandom-FD.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
@@ -29,7 +29,6 @@ body {
   --border-color: #424242;
 }
 
-
 /* Custom scrollbar for dark mode */
 .dark ::-webkit-scrollbar {
   width: 8px;
@@ -48,12 +47,12 @@ body {
   background: #666;
 }
 
-.center-con{
+.center-con {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 /*app layout styles-------------------*/
@@ -82,9 +81,55 @@ body {
   .contentMain {
     padding: 12px;
   }
-
   .siderLogo {
     padding: 10px;
     font-size: 15px;
   }
+  .headerMain {
+    padding: 0 12px !important;
+    height: 56px !important;
+  }
+  .ant-list-item {
+    border-bottom: 1px solid #f0f0f0 !important;
+  }
+
+  .ant-list-item-meta {
+    margin-bottom: 0 !important;
+  }
+
+  .ant-list-item-meta-content {
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+}
+.headerMain {
+  padding: 0 16px !important;
+  height: 64px !important;
+}
+.user-list-item:hover {
+  background-color: var(--hover-bg, #fafafa);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .user-list-item:hover {
+  --hover-bg: #1f1f1f;
+}
+@media (max-width: 576px) {
+  .headerMain {
+    padding: 0 8px !important;
+  }
+  .ant-card-head {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .ant-card-head-title {
+    padding-bottom: 8px;
+  }
+}
+
+.siderLogo {
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
 }
